@@ -1,4 +1,4 @@
-## 📌 Acerca de este repositorio
+## Acerca de este repositorio
 
 Este repositorio documenta la arquitectura, el funcionamiento y las principales decisiones técnicas del proyecto.
 
@@ -18,30 +18,19 @@ Vaquita es una aplicación mobile-first para gestionar gastos compartidos entre 
 </p>
 
 
-## ✨ Características
+## Características
 
-- 👥 Gestión de grupos y amigos.
-- 💸 División de gastos mediante distintos métodos.
-- 🤖 Smart Scan con IA para cargar tickets automáticamente.
-- ☁️ Almacenamiento de comprobantes en la nube.
-- 📊 Estadísticas del grupo.
-- 🔔 Feed de actividad.
-- 💱 Conversión de monedas.
+- Gestión de grupos y amigos.
+- División de gastos mediante distintos métodos.
+- Smart Scan con IA para cargar tickets automáticamente.
+- Almacenamiento de comprobantes en la nube.
+- Estadísticas del grupo.
+- Feed de actividad.
+- Conversión de monedas.
 
-## 🛠️ Stack Tecnológico
+## El Problema y la solución
 
-| Categoría | Tecnologías |
-|-----------|-------------|
-| Frontend | React · Vite · Tailwind CSS · shadcn/ui |
-| Backend | Kotlin · Spring Boot |
-| Base de datos | PostgreSQL |
-| Storage | Supabase Storage |
-| Inteligencia Artificial | Google Gemini API |
-| Herramientas | Git · GitHub · Jira |
-
-## 🎯 El Problema y la Solución
-
-**El Problema**
+**El problema**
 
 La idea surgió al usar aplicaciones existentes del mismo tipo y notar varios puntos de fricción:
 
@@ -55,7 +44,7 @@ La idea surgió al usar aplicaciones existentes del mismo tipo y notar varios pu
 
 Desarrollamos una alternativa enfocada en la fluidez y la automatización. Implementamos características clave como grupos, manejo de amigos, feed de actividad y conversión de monedas. Los principales diferenciales técnicos son el **Smart Scan** (integración con la API de Gemini para la lectura de tickets mediante IA) y el almacenamiento en la nube de los comprobantes asociados a cada gasto (utilizando Supabase).
 
-## 👨‍💻 Mi contribución
+## Mi contribución
 
 Además del desarrollo de funcionalidades, asumí un rol de liderazgo técnico durante el proyecto, participando tanto en la definición de la solución como en la organización del equipo.
 
@@ -72,8 +61,7 @@ Entre mis principales responsabilidades estuvieron:
 
 Además, participé activamente en las presentaciones del proyecto y en la comunicación de las decisiones técnicas tomadas durante el desarrollo.
 
-
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del sistema
 
 El sistema sigue una arquitectura cliente-servidor clásica, con una separación clara de responsabilidades:
 
@@ -93,7 +81,7 @@ El sistema sigue una arquitectura cliente-servidor clásica, con una separación
 </p>
 
 
-## 🧠 Decisiones técnicas
+## Decisiones técnicas
 
 Durante el desarrollo priorizamos la velocidad de iteración y la viabilidad del MVP:
 
@@ -102,7 +90,7 @@ Durante el desarrollo priorizamos la velocidad de iteración y la viabilidad del
 3. **Delegación del OCR a Gemini:** crear un motor de reconocimiento óptico de caracteres propio y entrenarlo para entender distintos formatos de tickets era inviable por tiempo y costos. Usar la API de Gemini nos permitió validar rápido que la funcionalidad "Smart Scan" aportaba valor real al MVP.
 
 
-## ⚙️ Caso de Uso Principal: Smart Scan
+## Caso de Uso Principal: Smart Scan
 
 El flujo diferencial de la aplicación resuelve la carga manual de gastos automatizando la lectura del ticket:
 
@@ -116,9 +104,9 @@ El flujo diferencial de la aplicación resuelve la carga manual de gastos automa
 > Tanto este flujo como el de almacenamiento de comprobantes incluyen autenticación, autorización y validaciones de negocio adicionales que omitimos aquí para no extender la explicación.
 
 
-## 🚧 Desafíos Técnicos y Soluciones
+## Desafíos técnicos y soluciones
 
-### 1. Desafío del Escaneo Inteligente (OCR)
+### 1. Desafío del escaneo inteligente (OCR)
 
 Construir y entrenar un motor de OCR propio para interpretar tickets con formatos heterogéneos era inviable para los tiempos del MVP. La decisión fue delegar ese trabajo a la API de Gemini, usándola como modelo de OCR.
 
@@ -136,7 +124,7 @@ Esto nos permite confiar en el escaneo la mayor parte del tiempo, y dejar siempr
         width="900"/>
 </p>
 
-### 2. Desafío del Almacenamiento de Tickets
+### 2. Desafío del almacenamiento de tickets
 
 Necesitábamos guardar el comprobante original de cada gasto sin sobrecargar al backend con la transferencia de archivos. El flujo quedó así:
 
@@ -155,7 +143,7 @@ Necesitábamos guardar el comprobante original de cada gasto sin sobrecargar al 
 **Por qué dos enfoques distintos:** en el caso del OCR, el backend necesita ver la imagen para reenviarla a Gemini y validar la respuesta: si bien se puede considerar un "pasamanos", aporta valor. En el caso del almacenamiento, en cambio, el backend no necesita tocar el binario de la imagen: usar una presigned URL le permite al frontend subir el archivo directo a Supabase, evitando que el backend cargue con un trabajo de transferencia que no le corresponde y que consumiría recursos innecesariamente.
 
 
-## 📱 Demostración (UI)
+## Demostración (UI)
 
 A continuación algunas vistas de la aplicación:
 
@@ -166,7 +154,7 @@ A continuación algunas vistas de la aplicación:
 </p>
 
 
-## 📌 Estado del proyecto
+## Estado del proyecto
 
 El proyecto fue desarrollado como MVP funcional y permitió validar la experiencia de uso del Smart Scan y del sistema de gestión de gastos compartidos.
 
